@@ -16,6 +16,20 @@ class UsersStorage {
     return Object.values(this.storage);
   }
 
+  searchUsers(firstName, lastName, email) {
+    for (let id in this.storage) {
+      const user = this.storage[id];
+      if (
+        user.firstName === firstName ||
+        user.lastName === lastName ||
+        user.email === email
+      ) {
+        return user;
+      }
+    }
+    return null;
+  }
+
   getUser(id) {
     return this.storage[id];
   }

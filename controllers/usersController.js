@@ -76,6 +76,20 @@ exports.usersUpdatePost = [
   },
 ];
 
+exports.usersSearchGet = [
+  (req, res) => {
+    const users = usersStorage.searchUsers(
+      req.query.firstName,
+      req.query.lastName,
+      req.query.email
+    );
+
+    res.render("search", {
+      users,
+    });
+  },
+];
+
 // We can pass an entire array of middleware validations to our controller.
 exports.usersCreatePost = [
   validateUser,
